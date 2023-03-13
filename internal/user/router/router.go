@@ -11,7 +11,8 @@ func NewHTTPRouter(handler HTTPHandler) *iris.Application {
 
 	userAPI := router.Party("/api/v1/user")
 	{
-		userAPI.Post("/register", handler.Register)
+		userAPI.Get("/register", handler.Register)
+		userAPI.Put("/register", handler.Register)
 	}
 
 	return router

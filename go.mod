@@ -3,9 +3,9 @@ module github.com/tackboon/ebook
 go 1.20
 
 require (
-	github.com/go-playground/validator v9.31.0+incompatible
 	github.com/go-playground/validator/v10 v10.11.2
-	github.com/kataras/iris/v12 v12.2.0-beta7.0.20230309132229-fc93c6259eb6
+	github.com/iris-contrib/middleware/cors v0.0.0-20230311205048-b568fe9b470f
+	github.com/kataras/iris/v12 v12.2.0
 	github.com/sirupsen/logrus v1.8.1
 )
 
@@ -51,7 +51,6 @@ require (
 	golang.org/x/text v0.8.0 // indirect
 	golang.org/x/time v0.3.0 // indirect
 	google.golang.org/protobuf v1.29.0 // indirect
-	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
