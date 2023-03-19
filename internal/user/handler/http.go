@@ -5,7 +5,7 @@ import (
 
 	"github.com/go-playground/validator/v10"
 	"github.com/kataras/iris/v12"
-	"github.com/tackboon/ebook/internal/user/router"
+	"github.com/tackboon/ebook/internal/user/models"
 	"github.com/tackboon/ebook/internal/user/service"
 )
 
@@ -19,9 +19,9 @@ func NewHttpServer(userService service.UserService) HTTPServer {
 	}
 }
 
-func (h HTTPServer) Register(ctx iris.Context) {
-	var user router.UserRequest
-	err := ctx.ReadJSON(&user)
+func (h HTTPServer) GetProfile(ctx iris.Context) {
+	var params models.GetProfileRequest
+	err := ctx.ReadQuery(&params)
 	if err != nil {
 		if errs, ok := err.(validator.ValidationErrors); ok {
 			fmt.Println(errs.Error())
@@ -29,5 +29,6 @@ func (h HTTPServer) Register(ctx iris.Context) {
 		ctx.Write([]byte("params_error"))
 		return
 	}
+	h.userService.SayHello(ctx.Request().Context())
 	ctx.Write([]byte("registers"))
 }

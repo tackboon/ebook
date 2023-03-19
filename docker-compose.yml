@@ -61,3 +61,20 @@ services:
     depends_on:
       - mysql
       - redis
+
+  ################################################################
+  # Application service - auth (GRPC Protocol)
+  ################################################################
+  ebook-auth-grpc:
+    build:
+      dockerfile: Dockerfile.development
+    container_name: ebook-auth-grpc
+    hostname: ebook-auth-grpc
+    working_dir: /ebook/internal/auth
+    volumes:
+      - ./internal:/ebook/internal
+    env_file:
+      - .env
+    depends_on:
+      - mysql
+      - redis

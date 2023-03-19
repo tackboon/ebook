@@ -19,3 +19,10 @@ migrate-down:
 		migrate/migrate:v4.15.2 down \
 		-database $(DB_DRIVER)://$(DB_USER):$(MYSQL_ROOT_PASSWORD)@$(DB_HOST):$(DB_PORT)/$(DB_NAME) \
 		-path /migrations
+
+.PHONY: proto
+proto:
+	@protoc --plugin=grpc \
+		--go_out=internal/common/genproto \
+		--go-grpc_out=internal/common/genproto \
+		--proto_path=api/protobuf auth.proto
